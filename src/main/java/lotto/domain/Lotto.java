@@ -1,6 +1,4 @@
-package lotto;
-
-import lotto.global.message.ErrorMessage;
+package lotto.domain;
 
 import java.util.List;
 

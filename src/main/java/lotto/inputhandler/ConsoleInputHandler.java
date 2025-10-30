@@ -1,9 +1,8 @@
 package lotto.inputhandler;
 
 import camp.nextstep.edu.missionutils.Console;
-import lotto.Lotto;
+import lotto.domain.Lotto;
 import lotto.dto.LottoRequestDto;
-import lotto.global.message.ErrorMessage;
 import lotto.global.util.InputVerifier;
 import lotto.global.util.LottoGenerator;
 import lotto.global.util.RetryHandler;
