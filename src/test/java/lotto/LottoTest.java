@@ -3,9 +3,12 @@ package lotto;
 import lotto.domain.Lotto;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
-
+import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.ValueSource;
+import java.util.Arrays;
 import java.util.List;
 
+import static org.assertj.core.api.Assertions.*;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
 class LottoTest {
@@ -23,4 +26,20 @@ class LottoTest {
     }
 
     // TODO: 추가 기능 구현에 따른 테스트 코드 작성
+
+    @ParameterizedTest
+    @DisplayName("Lotto 인스턴스 생성 성공")
+    @ValueSource(strings = {"1,2,3,4,5,6", "4,5,6,8,9,12", "24,25,29,30,44,45"})
+    void generateLottoInstanceSuccess(String input) {
+
+        // given
+        List<Integer> numbers = Arrays.stream(input.split(",")).map(Integer::parseInt).toList();
+
+        // when
+        Lotto lotto = new Lotto(numbers);
+
+        // then
+        assertThat(lotto.getNumbers()).isEqualTo(numbers);
+    }
+
 }
