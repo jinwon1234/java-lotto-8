@@ -32,7 +32,7 @@ public class ConsoleInputHandler implements InputHandler {
 
         System.out.println(INPUT_PURCHASE_AMOUNT_REQUEST);
         int purchaseAmount = InputVerifier.safeParseInt(Console.readLine().trim());
-        int lottoCount = InputVerifier.safeDivide(purchaseAmount, LOTTO_COST);
+        int lottoCount = InputVerifier.safeDivideForRemainderZero(purchaseAmount, LOTTO_COST);
         System.out.printf((INPUT_PURCHASE_AMOUNT_RESPONSE) + "\n", lottoCount);
         return LottoGenerator.generate(lottoCount);
     }

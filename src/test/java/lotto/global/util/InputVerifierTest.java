@@ -53,7 +53,7 @@ class InputVerifierTest {
     void safeDivideSuccess(int input) {
 
         // when
-        int result = InputVerifier.safeDivide(input, LOTTO_COST);
+        int result = InputVerifier.safeDivideForRemainderZero(input, LOTTO_COST);
 
         // then
         assertThat(result).isEqualTo(input /  LOTTO_COST);
@@ -66,7 +66,7 @@ class InputVerifierTest {
     void safeDivideFail(int input) {
 
         // when & then
-        Assertions.assertThatThrownBy(()->InputVerifier.safeDivide(input, LOTTO_COST))
+        Assertions.assertThatThrownBy(()->InputVerifier.safeDivideForRemainderZero(input, LOTTO_COST))
                 .isInstanceOf(IllegalArgumentException.class)
                 .hasMessage(NOT_ZERO_REMAINDER_ERROR);
 

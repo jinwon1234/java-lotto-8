@@ -16,7 +16,7 @@ public final class InputVerifier {
         }
     }
 
-    public static int safeDivide(int num, int divisor) {
+    public static int safeDivideForRemainderZero(int num, int divisor) {
         if (num % divisor == 0) {
             return num / divisor;
         }
