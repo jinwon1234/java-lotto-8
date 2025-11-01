@@ -1,10 +1,13 @@
 package lotto;
 
 import lotto.domain.Lotto;
+import lotto.domain.LottoRank;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.ValueSource;
+
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
@@ -42,4 +45,138 @@ class LottoTest {
         assertThat(lotto.getNumbers()).isEqualTo(numbers);
     }
 
+    @ParameterizedTest
+    @DisplayName("Lotto 등수 계산 성공 - 1등")
+    @ValueSource(strings = {"1,2,3,4,5,6", "1,2,3,4,5,7", "24,25,29,30,31,32"})
+    void getRankFirstSuccess(String input) {
+
+        // given
+        List<Integer> myNumbers = Arrays.stream(input.split(",")).map(Integer::parseInt).toList();
+        Lotto lotto = new Lotto(myNumbers);
+
+        // when
+        LottoRank rank = lotto.getRank(lotto,45);
+
+        // then
+        assertThat(rank).isEqualTo(LottoRank.FIRST);
+    }
+
+    @ParameterizedTest
+    @DisplayName("Lotto 등수 계산 성공 - 2등")
+    @ValueSource(strings = {"1,2,3,4,5,10", "2,3,4,5,6,11"})
+    void getRankSecondSuccess(String input) {
+        // given
+        List<Integer> myNumbers = Arrays.stream(input.split(","))
+                .map(Integer::parseInt)
+                .toList();
+        Lotto lotto = new Lotto(myNumbers);
+
+        // 6개 중 마지막 번호를 다른 숫자로 바꿔서 당첨번호 생성
+        List<Integer> winningNumbers = new ArrayList<>(myNumbers.subList(0, 5));
+        winningNumbers.add(45); // 다른 번호
+        Lotto winningLotto = new Lotto(winningNumbers);
+
+        int bonusNumber = myNumbers.getLast(); // 내 로또의 마지막 번호를 보너스로 설정
+
+        // when
+        LottoRank rank = lotto.getRank(winningLotto, bonusNumber);
+
+        // then
+        assertThat(rank).isEqualTo(LottoRank.SECOND);
+    }
+
+    @ParameterizedTest
+    @DisplayName("Lotto 등수 계산 성공 - 3등")
+    @ValueSource(strings = {"1,2,3,4,5,10", "2,3,4,5,6,11"})
+    void getRankThirdSuccess(String input) {
+        // given
+        List<Integer> myNumbers = Arrays.stream(input.split(","))
+                .map(Integer::parseInt)
+                .toList();
+        Lotto lotto = new Lotto(myNumbers);
+
+        // 6개 중 마지막 번호를 다른 숫자로 바꿔서 당첨번호 생성
+        List<Integer> winningNumbers = new ArrayList<>(myNumbers.subList(0, 5));
+        winningNumbers.add(45); // 다른 번호
+        Lotto winningLotto = new Lotto(winningNumbers);
+
+        // when
+        LottoRank rank = lotto.getRank(winningLotto, 44);
+
+        // then
+        assertThat(rank).isEqualTo(LottoRank.THIRD);
+    }
+
+    @ParameterizedTest
+    @DisplayName("Lotto 등수 계산 성공 - 4등")
+    @ValueSource(strings = {"1,2,3,4,5,10", "2,3,4,5,6,11"})
+    void getRankFourthSuccess(String input) {
+        // given
+        List<Integer> myNumbers = Arrays.stream(input.split(","))
+                .map(Integer::parseInt)
+                .toList();
+        Lotto lotto = new Lotto(myNumbers);
+
+        // 6개 중 마지막 번호를 다른 숫자로 바꿔서 당첨번호 생성
+        List<Integer> winningNumbers = new ArrayList<>(myNumbers.subList(0, 4));
+        winningNumbers.add(45); // 다른 번호
+        winningNumbers.add(44);
+        Lotto winningLotto = new Lotto(winningNumbers);
+
+        // when
+        LottoRank rank = lotto.getRank(winningLotto, 43);
+
+        // then
+        assertThat(rank).isEqualTo(LottoRank.FOURTH);
+    }
+
+    @ParameterizedTest
+    @DisplayName("Lotto 등수 계산 성공 - 5등")
+    @ValueSource(strings = {"1,2,3,4,5,10", "2,3,4,5,6,11"})
+    void getRankFifthSuccess(String input) {
+        // given
+        List<Integer> myNumbers = Arrays.stream(input.split(","))
+                .map(Integer::parseInt)
+                .toList();
+        Lotto lotto = new Lotto(myNumbers);
+
+        // 6개 중 마지막 번호를 다른 숫자로 바꿔서 당첨번호 생성
+        List<Integer> winningNumbers = new ArrayList<>(myNumbers.subList(0, 3));
+        winningNumbers.add(45); // 다른 번호
+        winningNumbers.add(44);
+        winningNumbers.add(43);
+        Lotto winningLotto = new Lotto(winningNumbers);
+
+        // when
+        LottoRank rank = lotto.getRank(winningLotto, 42);
+
+        // then
+        assertThat(rank).isEqualTo(LottoRank.FIFTH);
+    }
+
+
+    @ParameterizedTest
+    @DisplayName("Lotto 등수 계산 성공 - 등수 없음")
+    @ValueSource(strings = {"1,2,3,4,5,10", "2,3,4,5,6,11"})
+    void getRankNoneSuccess(String input) {
+        // given
+        List<Integer> myNumbers = Arrays.stream(input.split(","))
+                .map(Integer::parseInt)
+                .toList();
+        Lotto lotto = new Lotto(myNumbers);
+
+        // 6개 중 마지막 번호를 다른 숫자로 바꿔서 당첨번호 생성
+        List<Integer> winningNumbers = new ArrayList<>(myNumbers.subList(0, 2));
+        winningNumbers.add(45); // 다른 번호
+        winningNumbers.add(44);
+        winningNumbers.add(43);
+        winningNumbers.add(42);
+        Lotto winningLotto = new Lotto(winningNumbers);
+
+        // when
+        LottoRank rank = lotto.getRank(winningLotto, 41);
+
+        // then
+        assertThat(rank).isEqualTo(LottoRank.NONE);
+    }
 }
