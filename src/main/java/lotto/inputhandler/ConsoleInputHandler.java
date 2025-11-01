@@ -31,7 +31,7 @@ public class ConsoleInputHandler implements InputHandler {
     private List<Lotto> getMyLottos() {
 
         System.out.println(INPUT_PURCHASE_AMOUNT_REQUEST);
-        int purchaseAmount = InputVerifier.safeParseInt(Console.readLine().trim());
+        int purchaseAmount = InputVerifier.safeParseInt(Console.readLine());
         int lottoCount = InputVerifier.safeDivideForRemainderZero(purchaseAmount, LOTTO_COST);
         System.out.printf((INPUT_PURCHASE_AMOUNT_RESPONSE) + "\n", lottoCount);
         return LottoGenerator.generate(lottoCount);
@@ -39,7 +39,7 @@ public class ConsoleInputHandler implements InputHandler {
 
     private Lotto getWinningLotto() {
         System.out.println(INPUT_WINNING_LOTTO);
-        String numbers = Console.readLine().trim();
+        String numbers = Console.readLine();
 
         List<Integer> lottoNumbers = Arrays.stream(numbers.split(","))
                 .map(InputVerifier::safeParseInt)
@@ -50,7 +50,7 @@ public class ConsoleInputHandler implements InputHandler {
 
     private int getBonusNumber() {
         System.out.println(INPUT_BONUS_NUMBER);
-        int bonusNumber = InputVerifier.safeParseInt(Console.readLine().trim());
+        int bonusNumber = InputVerifier.safeParseInt(Console.readLine());
 
         if (bonusNumber < 0 || bonusNumber > 45) {
             throw new IllegalArgumentException(INVALID_LOTTO_NUMBER);

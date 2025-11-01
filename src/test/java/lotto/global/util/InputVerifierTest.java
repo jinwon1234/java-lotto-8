@@ -25,7 +25,7 @@ class InputVerifierTest {
     }
 
     @ParameterizedTest
-    @ValueSource(strings = {"5", "10", "10403123"})
+    @ValueSource(strings = {"5", "   10", "10403123   "})
     @DisplayName("숫자 형태의 입력값이 들어오면 int 형태로 변환 후 반환")
     void safeParseIntSuccess(String input) {
 
@@ -33,7 +33,7 @@ class InputVerifierTest {
         int result = InputVerifier.safeParseInt(input);
 
         // then
-        assertThat(result).isEqualTo(Integer.parseInt(input));
+        assertThat(result).isEqualTo(Integer.parseInt(input.trim()));
     }
 
     @ParameterizedTest

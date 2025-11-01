@@ -10,7 +10,7 @@ public final class InputVerifier {
 
     public static int safeParseInt(String num) {
         try {
-            return Integer.parseInt(num);
+            return Integer.parseInt(num.trim());
         } catch (NumberFormatException e) {
             throw new IllegalArgumentException(NOT_NUMBER_ERROR);
         }
