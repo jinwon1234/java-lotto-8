@@ -2,6 +2,7 @@ package lotto.domain;
 
 import java.util.List;
 
+import static lotto.domain.LottoRank.*;
 import static lotto.global.message.ErrorMessage.*;
 
 public class Lotto {
@@ -36,6 +37,26 @@ public class Lotto {
 
     public List<Integer> getNumbers() {
         return numbers;
+    }
+
+    public LottoRank getRank(Lotto winningLotto, int bonusNumber) {
+        List<Integer> winningLottoNumbers = winningLotto.getNumbers();
+        List<Integer> myLottoNumbers = this.getNumbers();
+
+        int count = 0;
+        boolean matchBonusNumber = false;
+
+        for (Integer myLottoNumber : myLottoNumbers) {
+            if (winningLottoNumbers.contains(myLottoNumber)) count++;
+            else if (myLottoNumber.equals(bonusNumber)) matchBonusNumber = true;
+        }
+
+        if (count == 6) return FIRST;
+        if (count == 5 && matchBonusNumber) return SECOND;
+        if (count == 5) return THIRD;
+        if (count == 4) return FOURTH;
+        if (count == 3) return FIFTH;
+        return NONE;
     }
 
     @Override
