@@ -28,7 +28,7 @@ public class LottoServiceV1 implements LottoService {
         Map<LottoRank, Integer> rankCountMap = new EnumMap<>(LottoRank.class);
 
         for (Lotto myLotto : lottoRequestDto.myLottos()) {
-            LottoRank rank = myLotto.getRank(lottoRequestDto.winningLotto(), lottoRequestDto.bonusNumber());
+            LottoRank rank = myLotto.getRank(lottoRequestDto.winningLotto());
             if (rank == LottoRank.NONE) continue;
             rankCountMap.merge(rank, 1, Integer::sum);
         }

@@ -39,8 +39,8 @@ public class Lotto {
         return numbers;
     }
 
-    public LottoRank getRank(Lotto winningLotto, int bonusNumber) {
-        List<Integer> winningLottoNumbers = winningLotto.getNumbers();
+    public LottoRank getRank(WinningLotto winningLotto) {
+        List<Integer> winningLottoNumbers = winningLotto.getLotto().getNumbers();
         List<Integer> myLottoNumbers = this.getNumbers();
 
         int count = 0;
@@ -48,7 +48,7 @@ public class Lotto {
 
         for (Integer myLottoNumber : myLottoNumbers) {
             if (winningLottoNumbers.contains(myLottoNumber)) count++;
-            else if (myLottoNumber.equals(bonusNumber)) matchBonusNumber = true;
+            else if (myLottoNumber.equals(winningLotto.getBonusNumber())) matchBonusNumber = true;
         }
 
         if (count == 6) return FIRST;

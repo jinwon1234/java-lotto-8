@@ -6,7 +6,7 @@ import lotto.domain.Lotto;
 import java.util.ArrayList;
 import java.util.List;
 
-import static lotto.global.message.ErrorMessage.INVALID_CONSTRUCTOR;
+import static lotto.global.message.ErrorMessage.*;
 
 public final class LottoGenerator {
 

@@ -2,6 +2,7 @@ package lotto.service;
 
 import lotto.domain.Lotto;
 import lotto.domain.LottoRank;
+import lotto.domain.WinningLotto;
 import lotto.dto.LottoRequestDto;
 import lotto.dto.LottoResultDto;
 import org.junit.jupiter.api.DisplayName;
@@ -31,7 +32,7 @@ class LottoServiceV1Test {
         // given
         List<Integer> myNumbers = Arrays.stream(input.split(",")).map(Integer::parseInt).toList();
         Lotto myLotto = new Lotto(myNumbers);
-        LottoRequestDto lottoRequestDto = new LottoRequestDto(List.of(myLotto), myLotto, 45);
+        LottoRequestDto lottoRequestDto = new LottoRequestDto(List.of(myLotto), new WinningLotto(myLotto, 45));
 
         // when
         LottoResultDto lottoResult = lottoServiceV1.getLottoResult(lottoRequestDto);
@@ -65,7 +66,7 @@ class LottoServiceV1Test {
 
         int bonusNumber = myNumbers.getLast(); // 내 로또의 마지막 번호를 보너스로 설정
 
-        LottoRequestDto lottoRequestDto = new LottoRequestDto(List.of(myLotto), winningLotto, bonusNumber);
+        LottoRequestDto lottoRequestDto = new LottoRequestDto(List.of(myLotto), new WinningLotto(winningLotto, bonusNumber));
 
         // when
         LottoResultDto lottoResult = lottoServiceV1.getLottoResult(lottoRequestDto);
@@ -97,7 +98,7 @@ class LottoServiceV1Test {
         winningNumbers.add(45); // 다른 번호
         Lotto winningLotto = new Lotto(winningNumbers);
 
-        LottoRequestDto lottoRequestDto = new LottoRequestDto(List.of(myLotto), winningLotto, 44);
+        LottoRequestDto lottoRequestDto = new LottoRequestDto(List.of(myLotto), new WinningLotto(winningLotto, 44));
 
         // when
         LottoResultDto lottoResult = lottoServiceV1.getLottoResult(lottoRequestDto);
@@ -130,7 +131,7 @@ class LottoServiceV1Test {
         winningNumbers.add(44);
         Lotto winningLotto = new Lotto(winningNumbers);
 
-        LottoRequestDto lottoRequestDto = new LottoRequestDto(List.of(myLotto), winningLotto, 43);
+        LottoRequestDto lottoRequestDto = new LottoRequestDto(List.of(myLotto), new WinningLotto(winningLotto, 43));
 
         // when
         LottoResultDto lottoResult = lottoServiceV1.getLottoResult(lottoRequestDto);
@@ -163,7 +164,7 @@ class LottoServiceV1Test {
         winningNumbers.add(44);
         winningNumbers.add(43);
         Lotto winningLotto = new Lotto(winningNumbers);
-        LottoRequestDto lottoRequestDto = new LottoRequestDto(List.of(myLotto), winningLotto, 42);
+        LottoRequestDto lottoRequestDto = new LottoRequestDto(List.of(myLotto), new WinningLotto(winningLotto, 42));
 
         // when
         LottoResultDto lottoResult = lottoServiceV1.getLottoResult(lottoRequestDto);
@@ -199,7 +200,7 @@ class LottoServiceV1Test {
         winningNumbers.add(42);
         Lotto winningLotto = new Lotto(winningNumbers);
 
-        LottoRequestDto lottoRequestDto = new LottoRequestDto(List.of(myLotto), winningLotto, 41);
+        LottoRequestDto lottoRequestDto = new LottoRequestDto(List.of(myLotto), new WinningLotto(winningLotto, 41));
 
         // when
         LottoResultDto lottoResult = lottoServiceV1.getLottoResult(lottoRequestDto);

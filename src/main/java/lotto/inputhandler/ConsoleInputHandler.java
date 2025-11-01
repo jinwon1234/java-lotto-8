@@ -2,6 +2,7 @@ package lotto.inputhandler;
 
 import camp.nextstep.edu.missionutils.Console;
 import lotto.domain.Lotto;
+import lotto.domain.WinningLotto;
 import lotto.dto.LottoRequestDto;
 import lotto.global.util.InputVerifier;
 import lotto.global.util.LottoGenerator;
@@ -11,7 +12,6 @@ import java.util.Arrays;
 import java.util.List;
 
 import static lotto.global.constant.Constant.*;
-import static lotto.global.message.ErrorMessage.*;
 import static lotto.global.message.Message.*;
 
 public class ConsoleInputHandler implements InputHandler {
@@ -23,9 +23,9 @@ public class ConsoleInputHandler implements InputHandler {
 
         Lotto winningLotto = RetryHandler.retryUntilValid(this::getWinningLotto);
 
-        Integer bonusNumber = RetryHandler.retryUntilValid(this::getBonusNumber);
+        WinningLotto winningLottoWithBonusNumber = RetryHandler.retryUntilValid(() -> getBonusNumber(winningLotto));
 
-        return new LottoRequestDto(myLotto, winningLotto, bonusNumber);
+        return new LottoRequestDto(myLotto, winningLottoWithBonusNumber);
     }
 
     private List<Lotto> getMyLottos() {
@@ -48,14 +48,10 @@ public class ConsoleInputHandler implements InputHandler {
         return new Lotto(lottoNumbers);
     }
 
-    private int getBonusNumber() {
+    private WinningLotto getBonusNumber(Lotto winningLotto) {
         System.out.println(INPUT_BONUS_NUMBER);
         int bonusNumber = InputVerifier.safeParseInt(Console.readLine());
 
-        if (bonusNumber < 0 || bonusNumber > 45) {
-            throw new IllegalArgumentException(INVALID_LOTTO_NUMBER);
-        }
-
-        return bonusNumber;
+        return new WinningLotto(winningLotto, bonusNumber);
     }
 }

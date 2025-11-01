@@ -2,6 +2,7 @@ package lotto;
 
 import lotto.domain.Lotto;
 import lotto.domain.LottoRank;
+import lotto.domain.WinningLotto;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
@@ -56,7 +57,7 @@ class LottoTest {
         Lotto myLotto = new Lotto(myNumbers);
 
         // when
-        LottoRank rank = myLotto.getRank(myLotto,45);
+        LottoRank rank = myLotto.getRank(new WinningLotto(myLotto,45));
 
         // then
         assertThat(rank).isEqualTo(FIRST);
@@ -80,7 +81,7 @@ class LottoTest {
         int bonusNumber = myNumbers.getLast(); // 내 로또의 마지막 번호를 보너스로 설정
 
         // when
-        LottoRank rank = myLotto.getRank(winningLotto, bonusNumber);
+        LottoRank rank = myLotto.getRank(new WinningLotto(winningLotto, bonusNumber));
 
         // then
         assertThat(rank).isEqualTo(SECOND);
@@ -102,7 +103,7 @@ class LottoTest {
         Lotto winningLotto = new Lotto(winningNumbers);
 
         // when
-        LottoRank rank = myLotto.getRank(winningLotto, 44);
+        LottoRank rank = myLotto.getRank(new WinningLotto(winningLotto, 44));
 
         // then
         assertThat(rank).isEqualTo(THIRD);
@@ -125,7 +126,7 @@ class LottoTest {
         Lotto winningLotto = new Lotto(winningNumbers);
 
         // when
-        LottoRank rank = myLotto.getRank(winningLotto, 43);
+        LottoRank rank = myLotto.getRank(new WinningLotto(winningLotto, 43));
 
         // then
         assertThat(rank).isEqualTo(FOURTH);
@@ -149,7 +150,7 @@ class LottoTest {
         Lotto winningLotto = new Lotto(winningNumbers);
 
         // when
-        LottoRank rank = myLotto.getRank(winningLotto, 42);
+        LottoRank rank = myLotto.getRank(new WinningLotto(winningLotto, 42));
 
         // then
         assertThat(rank).isEqualTo(FIFTH);
@@ -175,7 +176,7 @@ class LottoTest {
         Lotto winningLotto = new Lotto(winningNumbers);
 
         // when
-        LottoRank rank = myLotto.getRank(winningLotto, 41);
+        LottoRank rank = myLotto.getRank(new WinningLotto(winningLotto, 41));
 
         // then
         assertThat(rank).isEqualTo(NONE);
