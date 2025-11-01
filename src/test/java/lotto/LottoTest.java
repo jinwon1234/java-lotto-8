@@ -11,6 +11,7 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
+import static lotto.domain.LottoRank.*;
 import static org.assertj.core.api.Assertions.*;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
@@ -39,10 +40,10 @@ class LottoTest {
         List<Integer> numbers = Arrays.stream(input.split(",")).map(Integer::parseInt).toList();
 
         // when
-        Lotto lotto = new Lotto(numbers);
+        Lotto myLotto = new Lotto(numbers);
 
         // then
-        assertThat(lotto.getNumbers()).isEqualTo(numbers);
+        assertThat(myLotto.getNumbers()).isEqualTo(numbers);
     }
 
     @ParameterizedTest
@@ -52,13 +53,13 @@ class LottoTest {
 
         // given
         List<Integer> myNumbers = Arrays.stream(input.split(",")).map(Integer::parseInt).toList();
-        Lotto lotto = new Lotto(myNumbers);
+        Lotto myLotto = new Lotto(myNumbers);
 
         // when
-        LottoRank rank = lotto.getRank(lotto,45);
+        LottoRank rank = myLotto.getRank(myLotto,45);
 
         // then
-        assertThat(rank).isEqualTo(LottoRank.FIRST);
+        assertThat(rank).isEqualTo(FIRST);
     }
 
     @ParameterizedTest
@@ -69,7 +70,7 @@ class LottoTest {
         List<Integer> myNumbers = Arrays.stream(input.split(","))
                 .map(Integer::parseInt)
                 .toList();
-        Lotto lotto = new Lotto(myNumbers);
+        Lotto myLotto = new Lotto(myNumbers);
 
         // 6개 중 마지막 번호를 다른 숫자로 바꿔서 당첨번호 생성
         List<Integer> winningNumbers = new ArrayList<>(myNumbers.subList(0, 5));
@@ -79,10 +80,10 @@ class LottoTest {
         int bonusNumber = myNumbers.getLast(); // 내 로또의 마지막 번호를 보너스로 설정
 
         // when
-        LottoRank rank = lotto.getRank(winningLotto, bonusNumber);
+        LottoRank rank = myLotto.getRank(winningLotto, bonusNumber);
 
         // then
-        assertThat(rank).isEqualTo(LottoRank.SECOND);
+        assertThat(rank).isEqualTo(SECOND);
     }
 
     @ParameterizedTest
@@ -93,7 +94,7 @@ class LottoTest {
         List<Integer> myNumbers = Arrays.stream(input.split(","))
                 .map(Integer::parseInt)
                 .toList();
-        Lotto lotto = new Lotto(myNumbers);
+        Lotto myLotto = new Lotto(myNumbers);
 
         // 6개 중 마지막 번호를 다른 숫자로 바꿔서 당첨번호 생성
         List<Integer> winningNumbers = new ArrayList<>(myNumbers.subList(0, 5));
@@ -101,10 +102,10 @@ class LottoTest {
         Lotto winningLotto = new Lotto(winningNumbers);
 
         // when
-        LottoRank rank = lotto.getRank(winningLotto, 44);
+        LottoRank rank = myLotto.getRank(winningLotto, 44);
 
         // then
-        assertThat(rank).isEqualTo(LottoRank.THIRD);
+        assertThat(rank).isEqualTo(THIRD);
     }
 
     @ParameterizedTest
@@ -115,7 +116,7 @@ class LottoTest {
         List<Integer> myNumbers = Arrays.stream(input.split(","))
                 .map(Integer::parseInt)
                 .toList();
-        Lotto lotto = new Lotto(myNumbers);
+        Lotto myLotto = new Lotto(myNumbers);
 
         // 6개 중 마지막 번호를 다른 숫자로 바꿔서 당첨번호 생성
         List<Integer> winningNumbers = new ArrayList<>(myNumbers.subList(0, 4));
@@ -124,10 +125,10 @@ class LottoTest {
         Lotto winningLotto = new Lotto(winningNumbers);
 
         // when
-        LottoRank rank = lotto.getRank(winningLotto, 43);
+        LottoRank rank = myLotto.getRank(winningLotto, 43);
 
         // then
-        assertThat(rank).isEqualTo(LottoRank.FOURTH);
+        assertThat(rank).isEqualTo(FOURTH);
     }
 
     @ParameterizedTest
@@ -138,7 +139,7 @@ class LottoTest {
         List<Integer> myNumbers = Arrays.stream(input.split(","))
                 .map(Integer::parseInt)
                 .toList();
-        Lotto lotto = new Lotto(myNumbers);
+        Lotto myLotto = new Lotto(myNumbers);
 
         // 6개 중 마지막 번호를 다른 숫자로 바꿔서 당첨번호 생성
         List<Integer> winningNumbers = new ArrayList<>(myNumbers.subList(0, 3));
@@ -148,10 +149,10 @@ class LottoTest {
         Lotto winningLotto = new Lotto(winningNumbers);
 
         // when
-        LottoRank rank = lotto.getRank(winningLotto, 42);
+        LottoRank rank = myLotto.getRank(winningLotto, 42);
 
         // then
-        assertThat(rank).isEqualTo(LottoRank.FIFTH);
+        assertThat(rank).isEqualTo(FIFTH);
     }
 
 
@@ -163,7 +164,7 @@ class LottoTest {
         List<Integer> myNumbers = Arrays.stream(input.split(","))
                 .map(Integer::parseInt)
                 .toList();
-        Lotto lotto = new Lotto(myNumbers);
+        Lotto myLotto = new Lotto(myNumbers);
 
         // 6개 중 마지막 번호를 다른 숫자로 바꿔서 당첨번호 생성
         List<Integer> winningNumbers = new ArrayList<>(myNumbers.subList(0, 2));
@@ -174,9 +175,9 @@ class LottoTest {
         Lotto winningLotto = new Lotto(winningNumbers);
 
         // when
-        LottoRank rank = lotto.getRank(winningLotto, 41);
+        LottoRank rank = myLotto.getRank(winningLotto, 41);
 
         // then
-        assertThat(rank).isEqualTo(LottoRank.NONE);
+        assertThat(rank).isEqualTo(NONE);
     }
 }
