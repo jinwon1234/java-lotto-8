@@ -4,5 +4,5 @@ import lotto.dto.LottoResultDto;
 
 public interface OutputHandler {
 
-    String getResponse(LottoResultDto resultDto);
+    void getResponse(LottoResultDto resultDto);
 }

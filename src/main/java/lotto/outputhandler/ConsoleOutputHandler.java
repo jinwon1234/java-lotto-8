@@ -12,12 +12,12 @@ import static lotto.message.Message.OUTPUT_MESSAGE_FORMAT;
 
 public class ConsoleOutputHandler implements OutputHandler {
 
-    public String getResponse(LottoResultDto resultDto) {
+    public void getResponse(LottoResultDto resultDto) {
 
         DecimalFormat prizeFormat = new DecimalFormat("###,###");
         DecimalFormat yieldFormat = new DecimalFormat("###,###.0");
 
-        return OUTPUT_MESSAGE_FORMAT
+        String response = OUTPUT_MESSAGE_FORMAT
                 .formatted(
                         FIFTH.getMatchCount(), prizeFormat.format(FIFTH.getPrize()), resultDto.getFifthCount(),
                         FOURTH.getMatchCount(), prizeFormat.format(FOURTH.getPrize()), resultDto.getFourthCount(),
@@ -26,5 +26,6 @@ public class ConsoleOutputHandler implements OutputHandler {
                         FIRST.getMatchCount(), prizeFormat.format(FIRST.getPrize()), resultDto.getFirstCount(),
                         yieldFormat.format(resultDto.yield())
                 );
+        System.out.println(response);
     }
 }
