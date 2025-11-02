@@ -65,7 +65,7 @@ class LottoTest {
 
     @ParameterizedTest
     @DisplayName("Lotto 등수 계산 성공 - 2등")
-    @ValueSource(strings = {"1,2,3,4,5,10", "2,3,4,5,6,11"})
+    @ValueSource(strings = {"1,2,3,4,5,6", "1,2,3,4,5,7", "24,25,29,30,31,32"})
     void getRankSecondSuccess(String input) {
         // given
         List<Integer> myNumbers = Arrays.stream(input.split(","))
@@ -89,7 +89,7 @@ class LottoTest {
 
     @ParameterizedTest
     @DisplayName("Lotto 등수 계산 성공 - 3등")
-    @ValueSource(strings = {"1,2,3,4,5,10", "2,3,4,5,6,11"})
+    @ValueSource(strings = {"1,2,3,4,5,6", "1,2,3,4,5,7", "24,25,29,30,31,32"})
     void getRankThirdSuccess(String input) {
         // given
         List<Integer> myNumbers = Arrays.stream(input.split(","))
@@ -111,7 +111,7 @@ class LottoTest {
 
     @ParameterizedTest
     @DisplayName("Lotto 등수 계산 성공 - 4등")
-    @ValueSource(strings = {"1,2,3,4,5,10", "2,3,4,5,6,11"})
+    @ValueSource(strings = {"1,2,3,4,5,6", "1,2,3,4,5,7", "24,25,29,30,31,32"})
     void getRankFourthSuccess(String input) {
         // given
         List<Integer> myNumbers = Arrays.stream(input.split(","))
@@ -134,7 +134,7 @@ class LottoTest {
 
     @ParameterizedTest
     @DisplayName("Lotto 등수 계산 성공 - 5등")
-    @ValueSource(strings = {"1,2,3,4,5,10", "2,3,4,5,6,11"})
+    @ValueSource(strings = {"1,2,3,4,5,6", "1,2,3,4,5,7", "24,25,29,30,31,32"})
     void getRankFifthSuccess(String input) {
         // given
         List<Integer> myNumbers = Arrays.stream(input.split(","))
@@ -159,7 +159,7 @@ class LottoTest {
 
     @ParameterizedTest
     @DisplayName("Lotto 등수 계산 성공 - 등수 없음")
-    @ValueSource(strings = {"1,2,3,4,5,10", "2,3,4,5,6,11"})
+    @ValueSource(strings = {"1,2,3,4,5,6", "1,2,3,4,5,7", "24,25,29,30,31,32"})
     void getRankNoneSuccess(String input) {
         // given
         List<Integer> myNumbers = Arrays.stream(input.split(","))
