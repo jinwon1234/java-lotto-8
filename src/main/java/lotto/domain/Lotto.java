@@ -2,7 +2,6 @@ package lotto.domain;
 
 import java.util.List;
 
-import static lotto.domain.LottoRank.*;
 import static lotto.message.ErrorMessage.*;
 
 public class Lotto {
