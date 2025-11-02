@@ -43,20 +43,15 @@ public class Lotto {
         List<Integer> winningLottoNumbers = winningLotto.getLotto().getNumbers();
         List<Integer> myLottoNumbers = this.getNumbers();
 
-        int count = 0;
+        int matchCount = 0;
         boolean matchBonusNumber = false;
 
         for (Integer myLottoNumber : myLottoNumbers) {
-            if (winningLottoNumbers.contains(myLottoNumber)) count++;
+            if (winningLottoNumbers.contains(myLottoNumber)) matchCount++;
             else if (myLottoNumber.equals(winningLotto.getBonusNumber())) matchBonusNumber = true;
         }
 
-        if (count == 6) return FIRST;
-        if (count == 5 && matchBonusNumber) return SECOND;
-        if (count == 5) return THIRD;
-        if (count == 4) return FOURTH;
-        if (count == 3) return FIFTH;
-        return NONE;
+        return LottoRank.calculateRank(matchCount, matchBonusNumber);
     }
 
     @Override
