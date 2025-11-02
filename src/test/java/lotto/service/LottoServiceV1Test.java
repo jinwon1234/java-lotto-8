@@ -15,8 +15,8 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
+import static lotto.constant.Constant.LOTTO_COST;
 import static lotto.domain.LottoRank.*;
-import static lotto.global.constant.Constant.*;
 import static org.assertj.core.api.SoftAssertions.*;
 
 class LottoServiceV1Test {

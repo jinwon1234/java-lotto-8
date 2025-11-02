@@ -1,6 +1,7 @@
 package lotto.domain;
 
-import static lotto.global.message.ErrorMessage.*;
+import static lotto.message.ErrorMessage.DUPLICATE_LOTTO_NUMBERS;
+import static lotto.message.ErrorMessage.INVALID_LOTTO_NUMBER;
 
 public class WinningLotto {
 

@@ -1,4 +1,4 @@
-package lotto.global.message;
+package lotto.message;
 
 public final class ErrorMessage {
 

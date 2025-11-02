@@ -1,6 +1,6 @@
-package lotto.global.util;
+package lotto.util;
 
-import static lotto.global.message.ErrorMessage.*;
+import static lotto.message.ErrorMessage.*;
 
 public final class InputVerifier {
 

@@ -8,7 +8,7 @@ import static lotto.domain.LottoRank.*;
 import static lotto.domain.LottoRank.FIRST;
 import static lotto.domain.LottoRank.SECOND;
 import static lotto.domain.LottoRank.THIRD;
-import static lotto.global.message.Message.OUTPUT_MESSAGE_FORMAT;
+import static lotto.message.Message.OUTPUT_MESSAGE_FORMAT;
 
 public class ConsoleOutputHandler implements OutputHandler {
 

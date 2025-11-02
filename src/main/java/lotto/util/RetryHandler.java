@@ -1,10 +1,8 @@
-package lotto.global.util;
-
-import lotto.global.message.ErrorMessage;
+package lotto.util;
 
 import java.util.function.Supplier;
 
-import static lotto.global.message.ErrorMessage.*;
+import static lotto.message.ErrorMessage.*;
 
 public final class RetryHandler {
 

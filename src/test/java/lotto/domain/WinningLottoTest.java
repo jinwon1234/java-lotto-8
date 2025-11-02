@@ -1,9 +1,5 @@
 package lotto.domain;
 
-
-import lotto.global.message.ErrorMessage;
-import org.assertj.core.api.Assertions;
-import org.assertj.core.api.SoftAssertions;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.ValueSource;
@@ -11,7 +7,7 @@ import org.junit.jupiter.params.provider.ValueSource;
 import java.util.Arrays;
 import java.util.List;
 
-import static lotto.global.message.ErrorMessage.*;
+import static lotto.message.ErrorMessage.DUPLICATE_LOTTO_NUMBERS;
 import static org.assertj.core.api.Assertions.*;
 import static org.assertj.core.api.SoftAssertions.*;
 

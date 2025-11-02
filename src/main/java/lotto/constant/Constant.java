@@ -1,6 +1,6 @@
-package lotto.global.constant;
+package lotto.constant;
 
-import static lotto.global.message.ErrorMessage.INVALID_CONSTRUCTOR;
+import static lotto.message.ErrorMessage.INVALID_CONSTRUCTOR;
 
 public final class Constant {
 

@@ -1,4 +1,4 @@
-package lotto.global.util;
+package lotto.util;
 
 import camp.nextstep.edu.missionutils.Randoms;
 import lotto.domain.Lotto;
@@ -6,7 +6,7 @@ import lotto.domain.Lotto;
 import java.util.ArrayList;
 import java.util.List;
 
-import static lotto.global.message.ErrorMessage.*;
+import static lotto.message.ErrorMessage.*;
 
 public final class LottoGenerator {
 

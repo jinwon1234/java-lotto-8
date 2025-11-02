@@ -4,15 +4,16 @@ import camp.nextstep.edu.missionutils.Console;
 import lotto.domain.Lotto;
 import lotto.domain.WinningLotto;
 import lotto.dto.LottoRequestDto;
-import lotto.global.util.InputVerifier;
-import lotto.global.util.LottoGenerator;
-import lotto.global.util.RetryHandler;
+import lotto.util.InputVerifier;
+import lotto.util.LottoGenerator;
+import lotto.util.RetryHandler;
 
 import java.util.Arrays;
 import java.util.List;
 
-import static lotto.global.constant.Constant.*;
-import static lotto.global.message.Message.*;
+import static lotto.constant.Constant.LOTTO_COST;
+import static lotto.message.Message.*;
+
 
 public class ConsoleInputHandler implements InputHandler {
 

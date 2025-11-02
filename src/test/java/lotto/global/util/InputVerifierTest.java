@@ -1,13 +1,14 @@
 package lotto.global.util;
 
+import lotto.util.InputVerifier;
 import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.ValueSource;
 
-import static lotto.global.constant.Constant.*;
-import static lotto.global.message.ErrorMessage.NOT_NUMBER_ERROR;
-import static lotto.global.message.ErrorMessage.NOT_ZERO_REMAINDER_ERROR;
+import static lotto.constant.Constant.LOTTO_COST;
+import static lotto.message.ErrorMessage.NOT_NUMBER_ERROR;
+import static lotto.message.ErrorMessage.NOT_ZERO_REMAINDER_ERROR;
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
 

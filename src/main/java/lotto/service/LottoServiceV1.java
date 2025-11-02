@@ -10,7 +10,7 @@ import java.math.RoundingMode;
 import java.util.EnumMap;
 import java.util.Map;
 
-import static lotto.global.constant.Constant.*;
+import static lotto.constant.Constant.LOTTO_COST;
 
 public class LottoServiceV1 implements LottoService {
 

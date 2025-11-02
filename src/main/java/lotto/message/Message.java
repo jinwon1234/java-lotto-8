@@ -1,6 +1,6 @@
-package lotto.global.message;
+package lotto.message;
 
-import static lotto.global.message.ErrorMessage.*;
+import static lotto.message.ErrorMessage.*;
 
 public final class Message {
 
