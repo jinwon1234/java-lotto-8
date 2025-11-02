@@ -1,4 +1,4 @@
-package lotto.global.util;
+package lotto.util;
 
 import lotto.util.InputVerifier;
 import org.assertj.core.api.Assertions;

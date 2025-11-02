@@ -2,6 +2,7 @@ package lotto.domain;
 
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.CsvSource;
 import org.junit.jupiter.params.provider.ValueSource;
 
 import java.util.Arrays;
@@ -16,14 +17,16 @@ class WinningLottoTest {
 
     @ParameterizedTest
     @DisplayName("WinningLotto 인스턴스 생성 성공 - 보너스 번호와 로또 번호가 중복되지 않음")
-    @ValueSource(strings = {"1,2,3,4,5,6,7", "1,2,3,4,5,7,8", "24,25,29,30,31,32,33"})
-    void getWinningLottoInstanceSuccess(String input) {
+    @CsvSource({
+            "'1,2,3,4,5,6', 7",
+            "'1,2,3,4,5,6', 8",
+            "'1,2,3,4,5,6', 9",
+    })
+    void getWinningLottoInstanceSuccess(String winningNumbersInput, int bonusNumber) {
 
         // given
-        List<Integer> numbers = Arrays.stream(input.split(",")).map(Integer::parseInt).toList();
+        List<Integer> winningNumbers = Arrays.stream(winningNumbersInput.split(",")).map(Integer::parseInt).toList();
 
-        List<Integer> winningNumbers = numbers.subList(0, 6);
-        Integer bonusNumber = numbers.getLast();
 
         Lotto lotto = new Lotto(winningNumbers);
 
@@ -40,14 +43,15 @@ class WinningLottoTest {
 
     @ParameterizedTest
     @DisplayName("WinningLotto 인스턴스 생성 실패 - 보너스 번호와 로또 번호가 중복됨")
-    @ValueSource(strings = {"1,2,3,4,5,6,6", "1,2,3,4,5,7,7", "24,25,29,30,31,32,32"})
-    void getWinningLottoInstanceFail(String input) {
+    @CsvSource({
+            "'1,2,3,4,5,6', 6",
+            "'1,2,3,4,5,6', 4",
+            "'1,2,3,4,5,6', 3",
+    })
+    void getWinningLottoInstanceFail(String winningNumbersInput, int bonusNumber) {
 
         // given
-        List<Integer> numbers = Arrays.stream(input.split(",")).map(Integer::parseInt).toList();
-
-        List<Integer> winningNumbers = numbers.subList(0, 6);
-        Integer bonusNumber = numbers.getLast();
+        List<Integer> winningNumbers = Arrays.stream(winningNumbersInput.split(",")).map(Integer::parseInt).toList();
 
         Lotto lotto = new Lotto(winningNumbers);
 
