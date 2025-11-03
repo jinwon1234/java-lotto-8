@@ -88,4 +88,28 @@ src
 - 예외 상황 시 에러 문구를 출력해야 한다. 단, 에러 문구는 `[ERROR]`로 시작해야 한다.
 - 사용자가 잘못된 값을 입력할 경우 `IllegalArgumentException`을 발생시키고, `[ERROR]`로 시작하는 에러 메시지를 출력 후 그 부분부터 입력을 다시 받는다.
 
+## 프로그램 구조
+
+### 실행 흐름
+```
+Application
+        ↓
+LottoApplicationRunner
+        ↓
+     AppConfig
+        ↓
+InputHandler → LottoService → OutputHandler
+```
+
+### 계층간 책임
+| 계층                | 클래스                      | 주요 역할                                                                      |
+| ----------------- | ------------------------ |----------------------------------------------------------------------------|
+| **Application**   | `Application`            | 프로그램의 진입점 (`main` 메서드 실행) — `LottoApplicationRunner.run()` 호출을 통해 전체 실행 시작 |
+| **Runner**        | `LottoApplicationRunner` | 프로그램 전체 흐름 제어 (요청 입력 → 비즈니스 로직 수행 → 결과 출력)                                 |
+| **Configuration** | `AppConfig`              | 객체 생성 관리 (싱글톤)                                                             |
+| **Input Layer**   | `ConsoleInputHandler`    | 사용자 입력 처리 (구입 금액, 당첨 번호, 보너스 번호 입력)                                        |
+| **Service Layer** | `LottoServiceV1`         | 비즈니스 로직 수행 (등수 및 수익률 계산)                                                   |
+| **Output Layer**  | `ConsoleOutputHandler`   | 결과 출력 및 포맷팅                                                                |
+
+
 
