@@ -6,6 +6,7 @@ import lotto.domain.Lotto;
 import java.util.ArrayList;
 import java.util.List;
 
+import static lotto.constant.Constant.*;
 import static lotto.message.ErrorMessage.*;
 
 public final class LottoGenerator {
@@ -19,7 +20,7 @@ public final class LottoGenerator {
         List<Lotto> lottos = new ArrayList<>();
 
         for (int i=0; i<lottoCount; i++) {
-            List<Integer> numbers = Randoms.pickUniqueNumbersInRange(1, 45, 6)
+            List<Integer> numbers = Randoms.pickUniqueNumbersInRange(LOTTO_MIN_NUM, LOTTO_MAX_NUM, 6)
                     .stream().sorted().toList();
             lottos.add(new Lotto(numbers));
         }
