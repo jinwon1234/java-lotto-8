@@ -2,9 +2,11 @@ package lotto.domain;
 
 import java.util.List;
 
+import static lotto.constant.Constant.*;
 import static lotto.message.ErrorMessage.*;
 
 public class Lotto {
+    private static final int LOTTO_SIZE = 6;
     private final List<Integer> numbers;
 
     public Lotto(List<Integer> numbers) {
@@ -13,14 +15,14 @@ public class Lotto {
     }
 
     private void validate(List<Integer> numbers) {
-        if (numbers.size() != 6) {
+        if (numbers.size() != LOTTO_SIZE) {
             throw new IllegalArgumentException(INVALID_LOTTO_COUNT);
         }
 
         List<Integer> distinctNumbers = numbers.stream()
                 .distinct()
                 .filter(number -> {
-                    if (number > 45 || number < 0) {
+                    if (number > LOTTO_MAX_NUM || number < LOTTO_MIN_NUM) {
                         throw new IllegalArgumentException(INVALID_LOTTO_NUMBER);
                     }
                     return true;

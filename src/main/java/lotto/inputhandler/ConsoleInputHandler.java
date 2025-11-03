@@ -17,6 +17,8 @@ import static lotto.message.Message.*;
 
 public class ConsoleInputHandler implements InputHandler {
 
+    private static final String LOTTO_NUMBER_DELIMITER = ",";
+
     public LottoRequestDto getInput() {
         List<Lotto> myLotto = RetryHandler.retryUntilValid(this::getMyLottos);
 
@@ -34,7 +36,7 @@ public class ConsoleInputHandler implements InputHandler {
         System.out.println(INPUT_PURCHASE_AMOUNT_REQUEST);
         int purchaseAmount = InputVerifier.safeParseInt(Console.readLine());
         int lottoCount = InputVerifier.safeDivideForRemainderZero(purchaseAmount, LOTTO_COST);
-        System.out.printf((INPUT_PURCHASE_AMOUNT_RESPONSE) + "\n", lottoCount);
+        System.out.println(String.format(INPUT_PURCHASE_AMOUNT_RESPONSE, lottoCount));
         return LottoGenerator.generate(lottoCount);
     }
 
@@ -42,7 +44,7 @@ public class ConsoleInputHandler implements InputHandler {
         System.out.println(INPUT_WINNING_LOTTO);
         String numbers = Console.readLine();
 
-        List<Integer> lottoNumbers = Arrays.stream(numbers.split(","))
+        List<Integer> lottoNumbers = Arrays.stream(numbers.split(LOTTO_NUMBER_DELIMITER))
                 .map(InputVerifier::safeParseInt)
                 .sorted().toList();
 

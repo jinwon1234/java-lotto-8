@@ -32,23 +32,23 @@ public enum LottoRank {
     }
 
     public static LottoRank calculateRank(int matchCount, boolean matchBonusNumber) {
-        if (matchCount == 6) {
+        if (matchCount == FIRST.getMatchCount()) {
             return FIRST;
         }
 
-        if (matchCount == 5 && matchBonusNumber) {
+        if (matchCount == SECOND.getMatchCount() && matchBonusNumber) {
             return SECOND;
         }
 
-        if (matchCount == 5) {
+        if (matchCount == THIRD.getMatchCount()) {
             return THIRD;
         }
 
-        if (matchCount == 4) {
+        if (matchCount == FOURTH.getMatchCount()) {
             return FOURTH;
         }
 
-        if (matchCount == 3) {
+        if (matchCount == FIFTH.getMatchCount()) {
             return FIFTH;
         }
 

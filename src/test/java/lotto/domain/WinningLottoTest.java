@@ -7,6 +7,7 @@ import org.junit.jupiter.params.provider.CsvSource;
 import java.util.Arrays;
 import java.util.List;
 
+import static lotto.TestConstant.LOTTO_NUMBER_DELIMITER;
 import static lotto.message.ErrorMessage.DUPLICATE_LOTTO_NUMBERS;
 import static org.assertj.core.api.Assertions.*;
 import static org.assertj.core.api.SoftAssertions.*;
@@ -24,7 +25,7 @@ class WinningLottoTest {
     void getWinningLottoInstanceSuccess(String winningNumbersInput, int bonusNumber) {
 
         // given
-        List<Integer> winningNumbers = Arrays.stream(winningNumbersInput.split(",")).map(Integer::parseInt).toList();
+        List<Integer> winningNumbers = Arrays.stream(winningNumbersInput.split(LOTTO_NUMBER_DELIMITER)).map(Integer::parseInt).toList();
 
 
         Lotto lotto = new Lotto(winningNumbers);
@@ -50,7 +51,7 @@ class WinningLottoTest {
     void getWinningLottoInstanceFail(String winningNumbersInput, int bonusNumber) {
 
         // given
-        List<Integer> winningNumbers = Arrays.stream(winningNumbersInput.split(",")).map(Integer::parseInt).toList();
+        List<Integer> winningNumbers = Arrays.stream(winningNumbersInput.split(LOTTO_NUMBER_DELIMITER)).map(Integer::parseInt).toList();
 
         Lotto lotto = new Lotto(winningNumbers);
 

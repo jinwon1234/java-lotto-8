@@ -14,6 +14,9 @@ import static lotto.constant.Constant.LOTTO_COST;
 
 public class LottoServiceV1 implements LottoService {
 
+    private static final int PERCENTAGE = 100;
+    private static final int SCALE = 1;
+
     public LottoResultDto getLottoResult(LottoRequestDto lottoRequestDto) {
         Map<LottoRank, Integer> rankCountMap = getRankCountMap(lottoRequestDto);
 
@@ -45,8 +48,8 @@ public class LottoServiceV1 implements LottoService {
 
     private BigDecimal getYield(long winningAmount, int totalCost) {
         return BigDecimal.valueOf(winningAmount)
-                .multiply(BigDecimal.valueOf(100))
-                .divide(BigDecimal.valueOf(totalCost), 1, RoundingMode.HALF_UP);
+                .multiply(BigDecimal.valueOf(PERCENTAGE))
+                .divide(BigDecimal.valueOf(totalCost), SCALE, RoundingMode.HALF_UP);
 
     }
 }

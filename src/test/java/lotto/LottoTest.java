@@ -12,6 +12,7 @@ import org.junit.jupiter.params.provider.ValueSource;
 import java.util.Arrays;
 import java.util.List;
 
+import static lotto.TestConstant.*;
 import static org.assertj.core.api.Assertions.*;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
@@ -37,7 +38,7 @@ class LottoTest {
     void generateLottoInstanceSuccess(String input) {
 
         // given
-        List<Integer> numbers = Arrays.stream(input.split(",")).map(Integer::parseInt).toList();
+        List<Integer> numbers = Arrays.stream(input.split(LOTTO_NUMBER_DELIMITER)).map(Integer::parseInt).toList();
 
         // when
         Lotto myLotto = new Lotto(numbers);
@@ -59,8 +60,8 @@ class LottoTest {
     void getLottoResultForFirstSuccess(String myNumbersInput, String winningNumbersInput,
                                        int bonusNumber, LottoRank lottoRank) {
         // given
-        List<Integer> myNumbers = Arrays.stream(myNumbersInput.split(",")).map(Integer::parseInt).toList();
-        List<Integer> winningNumbers = Arrays.stream(winningNumbersInput.split(",")).map(Integer::parseInt).toList();
+        List<Integer> myNumbers = Arrays.stream(myNumbersInput.split(LOTTO_NUMBER_DELIMITER)).map(Integer::parseInt).toList();
+        List<Integer> winningNumbers = Arrays.stream(winningNumbersInput.split(LOTTO_NUMBER_DELIMITER)).map(Integer::parseInt).toList();
 
         Lotto myLotto = new Lotto(myNumbers);
         Lotto winningLotto = new Lotto(winningNumbers);

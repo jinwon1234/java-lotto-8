@@ -1,5 +1,6 @@
 package lotto.domain;
 
+import static lotto.constant.Constant.*;
 import static lotto.message.ErrorMessage.DUPLICATE_LOTTO_NUMBERS;
 import static lotto.message.ErrorMessage.INVALID_LOTTO_NUMBER;
 
@@ -16,7 +17,7 @@ public class WinningLotto {
     }
 
     private void validateBonusNumber(Lotto lotto, int bonusNumber) {
-        if (bonusNumber < 0 || bonusNumber > 45) {
+        if (bonusNumber < LOTTO_MIN_NUM || bonusNumber > LOTTO_MAX_NUM) {
             throw new IllegalArgumentException(INVALID_LOTTO_NUMBER);
         }
 

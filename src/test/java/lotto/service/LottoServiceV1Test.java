@@ -1,5 +1,6 @@
 package lotto.service;
 
+import lotto.TestConstant;
 import lotto.domain.Lotto;
 import lotto.domain.LottoRank;
 import lotto.domain.WinningLotto;
@@ -14,12 +15,15 @@ import java.math.RoundingMode;
 import java.util.Arrays;
 import java.util.List;
 
+import static lotto.TestConstant.*;
 import static lotto.constant.Constant.LOTTO_COST;
 import static org.assertj.core.api.Assertions.*;
 
 class LottoServiceV1Test {
 
     private LottoServiceV1 lottoServiceV1 = new LottoServiceV1();
+    private static final int PERCENTAGE = 100;
+    private static final int SCALE = 1;
 
 
     @ParameterizedTest
@@ -35,8 +39,8 @@ class LottoServiceV1Test {
     void getLottoResultForFirstSuccess(String myNumbersInput, String winningNumbersInput,
                                        int bonusNumber, LottoRank lottoRank) {
         // given
-        List<Integer> myNumbers = Arrays.stream(myNumbersInput.split(",")).map(Integer::parseInt).toList();
-        List<Integer> winningNumbers = Arrays.stream(winningNumbersInput.split(",")).map(Integer::parseInt).toList();
+        List<Integer> myNumbers = Arrays.stream(myNumbersInput.split(LOTTO_NUMBER_DELIMITER)).map(Integer::parseInt).toList();
+        List<Integer> winningNumbers = Arrays.stream(winningNumbersInput.split(LOTTO_NUMBER_DELIMITER)).map(Integer::parseInt).toList();
 
         Lotto myLotto = new Lotto(myNumbers);
         Lotto winningLotto = new Lotto(winningNumbers);
@@ -56,8 +60,8 @@ class LottoServiceV1Test {
         int totalCost = LOTTO_COST * size;
 
         return BigDecimal.valueOf(lottoRank.getPrize())
-                .multiply(BigDecimal.valueOf(100))
-                .divide(BigDecimal.valueOf(totalCost) , 1, RoundingMode.HALF_UP);
+                .multiply(BigDecimal.valueOf(PERCENTAGE))
+                .divide(BigDecimal.valueOf(totalCost) , SCALE, RoundingMode.HALF_UP);
 
     }
 }
