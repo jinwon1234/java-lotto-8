@@ -4,6 +4,56 @@
 
 ---
 
+## 디렉토리 구조
+```
+src
+┣ main
+┃ ┗ java
+┃ ┃ ┗ lotto
+┃ ┃ ┃ ┣ config
+┃ ┃ ┃ ┃ ┗ AppConfig.java
+┃ ┃ ┃ ┣ constant
+┃ ┃ ┃ ┃ ┗ Constant.java
+┃ ┃ ┃ ┣ domain
+┃ ┃ ┃ ┃ ┣ Lotto.java
+┃ ┃ ┃ ┃ ┣ LottoRank.java
+┃ ┃ ┃ ┃ ┗ WinningLotto.java
+┃ ┃ ┃ ┣ dto
+┃ ┃ ┃ ┃ ┣ LottoRequestDto.java
+┃ ┃ ┃ ┃ ┗ LottoResultDto.java
+┃ ┃ ┃ ┣ inputhandler
+┃ ┃ ┃ ┃ ┣ ConsoleInputHandler.java
+┃ ┃ ┃ ┃ ┗ InputHandler.java
+┃ ┃ ┃ ┣ message
+┃ ┃ ┃ ┃ ┣ ErrorMessage.java
+┃ ┃ ┃ ┃ ┗ Message.java
+┃ ┃ ┃ ┣ outputhandler
+┃ ┃ ┃ ┃ ┣ ConsoleOutputHandler.java
+┃ ┃ ┃ ┃ ┗ OutputHandler.java
+┃ ┃ ┃ ┣ service
+┃ ┃ ┃ ┃ ┣ LottoService.java
+┃ ┃ ┃ ┃ ┗ LottoServiceV1.java
+┃ ┃ ┃ ┣ util
+┃ ┃ ┃ ┃ ┣ InputVerifier.java
+┃ ┃ ┃ ┃ ┣ LottoGenerator.java
+┃ ┃ ┃ ┃ ┗ RetryHandler.java
+┃ ┃ ┃ ┣ Application.java
+┃ ┃ ┃ ┗ LottoApplicationRunner.java
+┗ test
+┃ ┗ java
+┃ ┃ ┗ lotto
+┃ ┃ ┃ ┣ domain
+┃ ┃ ┃ ┃ ┣ LottoRankTest.java
+┃ ┃ ┃ ┃ ┗ WinningLottoTest.java
+┃ ┃ ┃ ┣ service
+┃ ┃ ┃ ┃ ┗ LottoServiceV1Test.java
+┃ ┃ ┃ ┣ util
+┃ ┃ ┃ ┃ ┗ InputVerifierTest.java
+┃ ┃ ┃ ┣ ApplicationTest.java
+┃ ┃ ┃ ┣ LottoTest.java
+┃ ┃ ┃ ┗ TestConstant.java
+```
+
 ## 기능 요구사항 정리
 
 ### 1. 로또 구입 금액 입력
